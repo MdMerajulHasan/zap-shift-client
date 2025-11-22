@@ -15,24 +15,55 @@ const Banner = () => {
       showStatus={false}
       stopOnHover={true}
       showThumbs={false}
+      className="bg-white w-11/12 mx-auto rounded-4xl mb-24"
     >
-      <div>
+      <div className="relative">
         <img src={bannerImage1} />
-        <section className="flex">
-          <div className="flex">
-            <button>Track Your Parcel</button>{" "}
-            <span>
-              <FiArrowUpRight />
+        <section className="flex font-bold absolute bottom-17 left-20 gap-4">
+          <div className="flex items-center">
+            <button className="bg-primary text-button px-8 py-4 rounded-full">
+              Track Your Parcel
+            </button>
+            <span className="bg-[#1F1F1F] rounded-full text-primary p-3">
+              <FiArrowUpRight size={20} />
             </span>
           </div>
-          <button>Be A Rider</button>
+          <button className="px-8 py-4 rounded-xl border border-[#dadada]">
+            Be A Rider
+          </button>
         </section>
       </div>
       <div>
         <img src={bannerImage2} />
+        <section className="flex font-bold absolute bottom-17 left-20 gap-4">
+          <div className="flex items-center">
+            <button className="bg-primary text-button px-8 py-4 rounded-full">
+              Track Your Parcel
+            </button>
+            <span className="bg-[#1F1F1F] rounded-full text-primary p-3">
+              <FiArrowUpRight size={20} />
+            </span>
+          </div>
+          <button className="px-8 py-4 rounded-xl border border-[#dadada]">
+            Be A Rider
+          </button>
+        </section>
       </div>
       <div>
         <img src={bannerImage3} />
+        <section className="flex font-bold absolute bottom-17 left-20 gap-4">
+          <div className="flex items-center">
+            <button className="bg-primary text-button px-8 py-4 rounded-full">
+              Track Your Parcel
+            </button>
+            <span className="bg-[#1F1F1F] rounded-full text-primary p-3">
+              <FiArrowUpRight size={20} />
+            </span>
+          </div>
+          <button className="px-8 py-4 rounded-xl border border-[#dadada]">
+            Be A Rider
+          </button>
+        </section>
       </div>
     </Carousel>
   );
