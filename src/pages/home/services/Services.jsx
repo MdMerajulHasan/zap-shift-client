@@ -3,7 +3,7 @@ import liveTracking from "../../../assets/live-tracking.png";
 import safeDelivery from "../../../assets/safe-delivery.png";
 const Services = () => {
   return (
-    <div className="w-11/12 mx-auto space-y-6 py-20 border-t border-b border-dashed border-[#03464d]">
+    <div className="w-11/12 mx-auto space-y-6 py-20 mb-24 border-t border-b border-dashed border-[#03464d]">
       <div className="bg-white p-8 rounded-3xl flex justify-start items-center gap-12">
         <img src={liveTracking} alt="live-tracking image" />
         <div className="p-px py-15 border-r border-dashed border-[#03464d]"></div>

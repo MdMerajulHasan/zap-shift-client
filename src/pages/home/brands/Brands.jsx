@@ -41,9 +41,9 @@ const Brands = () => {
       {/* using swiper showing brand logos */}
       <Swiper
         className="w-11/12 mx-auto"
-        slidesPerView={4}
+        slidesPerView={3}
         grabCursor={true}
-        spaceBetween={30}
+        spaceBetween={200}
         centeredSlides={true}
         loop={true}
         modules={[Autoplay]}
@@ -51,7 +51,7 @@ const Brands = () => {
       >
         {brands.map((image, index) => (
           <SwiperSlide key={index}>
-            <img src={image} alt="brand logo" />
+            <img className="mx-auto" src={image} alt="brand logo" />
           </SwiperSlide>
         ))}
       </Swiper>
