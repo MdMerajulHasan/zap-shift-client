@@ -5,7 +5,7 @@ const Navbar = () => {
   const links = (
     <>
       <NavLink>Services</NavLink>
-      <NavLink>Coverage</NavLink>
+      <NavLink to="/coverage">Coverage</NavLink>
       <NavLink>About Us</NavLink>
       <NavLink>Pricing</NavLink>
       <NavLink>Be a Rider</NavLink>
@@ -41,7 +41,7 @@ const Navbar = () => {
         <Logo></Logo>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{links}</ul>
+        <ul className="menu gap-4 menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
         <a className="btn">Button</a>
