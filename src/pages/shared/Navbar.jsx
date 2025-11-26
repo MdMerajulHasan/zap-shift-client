@@ -1,7 +1,15 @@
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 import Logo from "../../components/logo/Logo";
+import useAuth from "../../hooks/useAuth";
+import { FiArrowUpRight } from "react-icons/fi";
 
 const Navbar = () => {
+  const { user, logoutUser } = useAuth();
+  const handleLogout = () => {
+    logoutUser()
+      .then()
+      .catch((error) => alert(error.message));
+  };
   const links = (
     <>
       <NavLink>Services</NavLink>
@@ -44,7 +52,25 @@ const Navbar = () => {
         <ul className="menu gap-4 menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+        {user ? (
+          <a onClick={handleLogout} className="btn text-button px-8 py-4">
+            Logout
+          </a>
+        ) : (
+          <Link className="btn text-button px-8 py-4" to="/login">
+            Sign In
+          </Link>
+        )}
+        <Link to="/login">
+          <div className="flex items-center mx-4">
+            <button className="btn bg-primary text-button rounded-xl">
+              Be a Rider
+            </button>
+            <span className="bg-[#1F1F1F] rounded-full text-primary p-3">
+              <FiArrowUpRight size={20} />
+            </span>
+          </div>
+        </Link>
       </div>
     </div>
   );

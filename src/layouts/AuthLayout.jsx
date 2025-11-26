@@ -5,13 +5,13 @@ import authImage from "../assets/authImage.png";
 
 const AuthLayout = () => {
   return (
-    <div className="w-11/12 mx-auto">
-      <Logo></Logo>
-      <div className="flex">
-        <div className="flex-1">
+    <div className="bg-[#fafdf0]">
+      <div className="flex items-center">
+        <div className="flex-1 bg-white pl-14 pt-11">
+          <Logo></Logo>
           <Outlet></Outlet>
         </div>
-        <div className="flex-1">
+        <div className="flex-1 w-full">
           <img src={authImage} alt="auth image" />
         </div>
       </div>
