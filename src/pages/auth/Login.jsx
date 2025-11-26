@@ -13,7 +13,6 @@ const Login = () => {
   const { signInUser, googleSignIn } = useAuth();
 
   const location = useLocation();
-  console.log("from login", location.state.from);
   const navigate = useNavigate();
 
   const handleGoogleLogin = () => {
@@ -80,7 +79,7 @@ const Login = () => {
       </form>
       <p className="text-[#71717a] mt-3">
         Don’t have any account?{" "}
-        <Link to="/registration">
+        <Link state={location?.state} to="/registration">
           <span className="text-[#8fa748]">Register</span>
         </Link>
       </p>

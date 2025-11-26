@@ -2,10 +2,12 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import { LuUserRoundPlus } from "react-icons/lu";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import axios from "axios";
 
 const Registration = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -15,7 +17,10 @@ const Registration = () => {
   const { registerUser, googleSignIn, update, setUser } = useAuth();
   const handleGoogleLogin = () => {
     googleSignIn()
-      .then((res) => console.log(res.user))
+      .then((res) => {
+        navigate(location?.state?.from || "/");
+        console.log(res.user);
+      })
       .catch((err) => alert(err.message));
   };
 
@@ -48,6 +53,7 @@ const Registration = () => {
           updateUserData(userProfileData);
         });
         setUser(res.user);
+        navigate(location?.state?.from || "/");
       })
       .catch((error) => alert(error.message));
   };
@@ -132,7 +138,7 @@ const Registration = () => {
       </form>
       <p className="text-[#71717a] mt-3">
         Already have an account?
-        <Link to="/login">
+        <Link state={location?.state} to="/login">
           <span className="text-[#8fa748]">Login</span>
         </Link>
       </p>

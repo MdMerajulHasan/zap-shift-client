@@ -5,7 +5,6 @@ import { Navigate, useLocation } from "react-router";
 const PrivateRote = ({ children }) => {
   const { user, loading } = useAuth();
   const location = useLocation();
-  console.log("from private route", location);
   if (loading) {
     return (
       <div className="my-5 md:my-10 flex justify-center items-center">

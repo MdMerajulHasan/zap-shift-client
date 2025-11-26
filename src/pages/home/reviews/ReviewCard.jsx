@@ -3,7 +3,6 @@ import { FaQuoteRight } from "react-icons/fa";
 
 const ReviewCard = ({ review }) => {
   const { review: reviewText, userName, user_photoURL } = review;
-  console.log(review);
   return (
     <div className="bg-white p-8 rounded-3xl">
       <span className="text-[#c3dfe2]">
