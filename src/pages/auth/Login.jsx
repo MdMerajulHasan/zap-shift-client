@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 
 const Login = () => {
   const {
@@ -12,15 +12,25 @@ const Login = () => {
 
   const { signInUser, googleSignIn } = useAuth();
 
+  const location = useLocation();
+  console.log("from login", location.state.from);
+  const navigate = useNavigate();
+
   const handleGoogleLogin = () => {
     googleSignIn()
-      .then((res) => console.log(res.user))
+      .then((res) => {
+        navigate(location?.state?.from || "/");
+        console.log(res.user);
+      })
       .catch((err) => alert(err.message));
   };
 
   const handleLogin = (data) => {
     signInUser(data.email, data.password)
-      .then((res) => console.log(res.user))
+      .then((res) => {
+        navigate(location?.state?.from || "/");
+        console.log(res.user);
+      })
       .catch((error) => alert(error.message));
   };
 

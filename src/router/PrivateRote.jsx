@@ -3,8 +3,9 @@ import useAuth from "../hooks/useAuth";
 import { Navigate, useLocation } from "react-router";
 
 const PrivateRote = ({ children }) => {
-  const [user, loading] = useAuth();
+  const { user, loading } = useAuth();
   const location = useLocation();
+  console.log("from private route", location);
   if (loading) {
     return (
       <div className="my-5 md:my-10 flex justify-center items-center">
@@ -15,7 +16,13 @@ const PrivateRote = ({ children }) => {
     );
   }
   if (!user) {
-    return <Navigate to="/login" state={{ from: location }} replace></Navigate>;
+    return (
+      <Navigate
+        to="/login"
+        state={{ from: location?.pathname }}
+        replace
+      ></Navigate>
+    );
   }
   return children;
 };

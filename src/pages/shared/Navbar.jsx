@@ -61,7 +61,7 @@ const Navbar = () => {
             Sign In
           </Link>
         )}
-        <Link to="/login">
+        <Link to="/rider">
           <div className="flex items-center mx-4">
             <button className="btn bg-primary text-button rounded-xl">
               Be a Rider
