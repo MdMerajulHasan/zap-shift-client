@@ -1,6 +1,7 @@
 import React from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { useLoaderData } from "react-router";
+import Swal from "sweetalert2";
 
 const SendParcel = () => {
   const serviceCenters = useLoaderData();
@@ -23,7 +24,54 @@ const SendParcel = () => {
   };
 
   const handleParcelSubmit = (data) => {
-    console.log(data);
+    const isDocument = data.parcelType === "document";
+    const isSameDistrict = data.senderDistrict === data.receiverDistrict;
+    let cost = 0;
+    if (isDocument) {
+      cost = isSameDistrict ? 60 : 80;
+    } else {
+      const parcelWeight = parseFloat(Number(data.parcelWeight));
+      if (parcelWeight <= 3) {
+        cost = isSameDistrict ? 110 : 150;
+      } else {
+        const minCost = isSameDistrict ? 110 : 150;
+        const extraWeight = parcelWeight - 3;
+        const extraCost = isSameDistrict
+          ? extraWeight * 40
+          : extraWeight * 40 + 40;
+        cost = minCost + extraCost;
+      }
+    }
+    console.log(cost);
+    Swal.fire({
+      title: "Are Yor Agree With The Cost?",
+      text: `You Cost Will be ${cost} taka!`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch("http://localhost:3000/parcels", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(data),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.acknowledged) {
+              alert("Parcel Sending Request Accepted!");
+            }
+          })
+          .catch((error) => alert(error));
+        // Swal.fire({
+        //   title: "Congratulations!",
+        //   text: "Your request has been taken.",
+        //   icon: "success",
+        // });
+      }
+    });
   };
   return (
     <div className="w-11/12 mx-auto py-20 px-24 bg-white rounded-4xl">
